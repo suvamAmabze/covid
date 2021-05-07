@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
 
 //import Routers-:
 import canHelpRouters from "./routers/canHelpRouters.js"
@@ -28,9 +29,15 @@ mongoose
 //Routers-:
 app.use("/api", canHelpRouters);
 
-app.get("/", (req, res) => {
-  res.send("Server is ready");
-});
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/covidfrontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/covidfrontend/build/index.html'))
+);
+
+// app.get("/", (req, res) => {
+//   res.send("Server is ready");
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
