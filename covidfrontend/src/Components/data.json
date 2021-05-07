@@ -1,0 +1,68 @@
+[
+  {
+    "_id": "1",
+    "region": "muzaffarpur",
+    "country_code": "MUZ"
+  },
+  {
+    "_id": "2",
+    "region": "patna",
+    "country_code": "PAT"
+  },
+  {
+    "_id": "3",
+    "region": "mumbai",
+    "country_code": "MUM"
+  },
+  {
+    "_id": "4",
+    "region": "delhi",
+    "country_code": "DEL"
+  },
+  {
+    "_id": "5",
+    "region": "chennai",
+    "country_code": "CHE"
+  },
+  {
+    "_id": "6",
+    "region": "kolkata",
+    "country_code": "KOL"
+  },
+  {
+    "_id": "5",
+    "region": "hyderabad",
+    "country_code": "HYD"
+  },
+  {
+    "_id": "6",
+    "region": "bangalore",
+    "country_code": "BAN"
+  },
+  {
+    "_id": "8",
+    "region": "gurgaon",
+    "country_code": "GUR"
+  },
+  {
+    "_id": "9",
+    "region": "pune",
+    "country_code": "PUN"
+  },
+  {
+    "_id": "10",
+    "region": "ahmedabad",
+    "country_code": "AHM"
+  },
+  { "_id": "11", "region": "thane", "country_code": "THA" },
+  { "_id": "12", "region": "nashik", "country_code": "NAS" },
+  { "_id": "13", "region": "lucknow", "country_code": "LUC" },
+  { "_id": "14", "region": "noida", "country_code": "NOI" },
+  { "_id": "15", "region": "faridabad", "country_code": "FAR" },
+  { "_id": "16", "region": "prayagraj", "country_code": "PRA" },
+  { "_id": "17", "region": "ranchi", "country_code": "RAN" },
+  { "_id": "18", "region": "jaipur", "country_code": "JAI" },
+  { "_id": "19", "region": "agra", "country_code": "AGR" },
+  { "_id": "20", "region": "chandigarh", "country_code": "CHA" },
+  { "_id": "21", "region": "bhubaneswar", "country_code": "BHU" }
+]

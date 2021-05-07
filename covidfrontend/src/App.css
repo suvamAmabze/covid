@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.text-center {
+  text-align: center;
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-weight600 {
+  font-weight: 600;
+}
+span {
+  color: rgb(0, 105, 217);
+}
+.color-red {
+  color: Crimson;
+}
+.color-red:hover {
+  color: red;
+}
+a {
+  text-decoration: none !important;
+}
+.hr {
+  box-shadow: 0 0 4px rgb(0, 105, 217);
+  border-bottom: solid 1px rgb(0, 105, 217);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.optionTitle {
+  font-size: 28px;
+}
+
+/* Card */
+.card {
+  margin: 20px;
+  box-shadow: 0 0 8px #e7e7e7;
+}
+.cardContainer {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card-img {
+  padding: 20px 20px 0 20px;
+  width: auto;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+.card-btn {
+  width: 100%;
+}
+
+/* User Account Screen */
+.UserAccountform {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+.UserAccountform > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.UserAccountform label {
+  margin: 5px 0;
+  display: block;
+  font-weight: bold;
+}
+
+/* display */
+.displayContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  box-shadow: 0 0 8px #e7e7e7;
+  word-break: break-word;
+  padding: 5px;
+}
+
+.displayContainer-title {
+  font-size: 18px;
+  color: rgb(0, 105, 217);
+}
+.displayContainer-title:hover {
+  color: #0056b3;
+}
+
+.leftside,
+.rightside {
+  height: 50vh;
+  width: 100%;
+}
+.leftside {
+  /* background-color: red; */
+}
+.rightside {
+  /* background-color: blueviolet; */
+}
+.optionsContainer-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  filter: brightness(70%);
+  transition: all 0.4s;
+}
+.optionsContainer-child:hover {
+  filter: brightness(85%);
+}
+
+.twoOptionTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* font-size: 32px; */
+  font-weight: bold;
+  color: #fff;
+}
+
+.CenterBody {
+  /* max-width: 1140px; */
+  max-width: 992px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+}
+
+.NeedHelp-img {
+  object-fit: cover;
+  object-position: center;
+  padding: 0 5px 5px 5px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+.zoom {
+  transition: transform 0.2s;
+}
+
+@media screen and (max-width: 450px) {
+  .cardContainer {
+    padding: 0;
+  }
+  .optionTitle {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .twoOptionTitle{
+    font-size: 28px;
+  }
+   
+}
+@media screen and (min-width: 600px) {
+  .twoOptionTitle{
+    font-size: 40px;
+  }
+  .zoom:hover {
+    transform: scale(1.5);
+  }
+}
+@media screen and (min-width: 768px) {
+  .leftside,
+  .rightside {
+    height: 100vh;
+  }
+  .CenterBody {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .zoom:hover {
+    transform: scale(2);
+  }
+}
+
+/* @media screen and (min-width: 992px) {
+  
+} */
+@media screen and (min-width: 1200px) {
+  .zoom:hover {
+    transform: scale(2.5);
+  }
+}
