@@ -25,6 +25,7 @@ export default function OxygenCylindersCanHelp(props) {
 
   const onChangeFile = (e) => {
     setFileName(e.target.files[0]);
+    console.log("F A", fileName)
   };
 
   const [fullNameErr, setFullNameErr] = useState({});
