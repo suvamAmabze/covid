@@ -96,7 +96,7 @@ export default function OxygenCylindersNeedHelp(props) {
               <img
                 alt=""
                 src={`/upload/${m.articleImage}`}
-                className="NeedHelp-img zoom"
+                className="NeedHelp-img zoom"        
               ></img>
             ) : null}
           </div>
