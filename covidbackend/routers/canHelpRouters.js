@@ -50,8 +50,8 @@ canHelpRouters.post(
   "/:city/:option/options/can-help",
   upload.single("articleImage"),
   expressAsyncHandler(async (req, res) => {
-    console.log("RF", req.file);
-    console.log("RB", req.body);
+    // console.log("RF", req.file);
+    // console.log("RB", req.body);
 
     let formReqInfo;
 

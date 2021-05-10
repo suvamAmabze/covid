@@ -92,13 +92,13 @@ export default function OxygenCylindersNeedHelp(props) {
               {m.createdAt}
             </p>
 
-            {m.articleImage ? (
+            {/* {m.articleImage ? ( */}
               <img
-                alt=""
+                alt="share image"
                 src={`/upload/${m.articleImage}`}
-                className="NeedHelp-img zoom"        
+                className="NeedHelp-img zoom"
               ></img>
-            ) : null}
+            {/* ) : null} */}
           </div>
         ))
       ) : (
