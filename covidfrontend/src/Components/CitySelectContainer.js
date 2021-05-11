@@ -52,8 +52,6 @@ export default function CitySelectContainer(props) {
     if (isValid) {
       city = DDLcity.name.split(" ").join("").toLowerCase();
       state = DDLstate.state.split(" ").join("").toLowerCase();
-      alert(city)
-      alert(state)
       // props.history.push(`/${city}`);
       props.history.push(`/${state}-${city}`);
     }
