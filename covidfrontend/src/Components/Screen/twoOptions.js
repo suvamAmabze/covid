@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
 import cardOptionsData from "../CardData";
-import cityData from "../data.json";
+import cityData from "../cities.json";
 
 export default function twoOptions(props) {
   const pathname = props.location.pathname.slice(1);
@@ -9,15 +9,30 @@ export default function twoOptions(props) {
   const reqOption = cardOptionsData.cards.find(
     (obj) => obj.routeTitle === props.match.params.option
   );
-  const reqCity = cityData.find(
-    (obj) => obj.region === props.match.params.city
+  // const reqCity = cityData.find(
+  //   (obj) => obj.region === props.match.params.city
+  // );
+  const reqState = cityData.find(
+    (obj) =>
+      obj.state.split(" ").join("").toLowerCase() ===
+      props.match.params.city.split("-")[0]
   );
+  let reqCity;
+  if (reqState) {
+    reqCity = reqState.cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[1]
+    );
+  }
 
-  if (!reqOption || !reqCity) {
-    return <div>Not Found</div>;
+  if (!reqOption || !reqState || !reqCity) {
+    return <div>Data Not Found</div>;
     //break
   }
   //else
+  console.log("props",props)
+  console.log(pathname)
   return (
     // <Container>
     <Row noGutters>
@@ -32,7 +47,7 @@ export default function twoOptions(props) {
         }}
       >
         <img
-        alt=""
+          alt=""
           src="/images/help.webp"
           className="leftside optionsContainer-child cursor-pointer"
         ></img>
@@ -47,7 +62,7 @@ export default function twoOptions(props) {
         }}
       >
         <img
-        alt=""
+          alt=""
           src="/images/needHelp.webp"
           className="rightside optionsContainer-child cursor-pointer"
         ></img>

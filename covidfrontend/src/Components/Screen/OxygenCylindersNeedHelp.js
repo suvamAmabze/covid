@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cardOptionsData from "../CardData";
-import cityData from "../data.json";
+import cityData from "../cities.json";
 
 export default function OxygenCylindersNeedHelp(props) {
   const pathname = props.location.pathname.slice(1);
+  console.log(pathname)
   let cityNameSplit = pathname.split("/")[0];
   let cityName = cityNameSplit.charAt(0).toUpperCase() + cityNameSplit.slice(1);
   // let optionType = props.match.params.option;
@@ -12,9 +13,22 @@ export default function OxygenCylindersNeedHelp(props) {
   const reqOption = cardOptionsData.cards.find(
     (obj) => obj.routeTitle === props.match.params.option
   );
-  const reqCity = cityData.find(
-    (obj) => obj.region === props.match.params.city
+  // const reqCity = cityData.find(
+  //   (obj) => obj.region === props.match.params.city
+  // );
+  const reqState = cityData.find(
+    (obj) =>
+      obj.state.split(" ").join("").toLowerCase() ===
+      props.match.params.city.split("-")[0]
   );
+  let reqCity;
+  if (reqState) {
+    reqCity = reqState.cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[1]
+    );
+  }
 
   const [displayData, setDisplayData] = useState([]);
 
@@ -38,7 +52,7 @@ export default function OxygenCylindersNeedHelp(props) {
       });
   };
 
-  if (!reqOption || !reqCity) {
+  if (!reqOption || !reqState || !reqCity) {
     return <div>Not Found</div>;
     //break
   }

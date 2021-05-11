@@ -1,19 +1,29 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import data from "./CardData";
-import cityData from "./data.json";
+import cityData from "./cities.json";
 
 export default function CardComponets(props) {
   // const pathname = props.location.pathname.slice(1);
   // console.log(pathname)
   // console.log(props.match.params.city)
 
-  const reqCity = cityData.find(
-    (obj) => obj.region === props.match.params.city
+  const reqState = cityData.find(
+    (obj) =>
+      obj.state.split(" ").join("").toLowerCase() ===
+      props.match.params.city.split("-")[0]
   );
+  let reqCity;
+  if (reqState) {
+    reqCity = reqState.cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[1]
+    );
+  }
 
-  if (!reqCity) {
-    return <div>City Not Found</div>;
+  if (!reqState || !reqCity) {
+    return <div>Data Not Found</div>;
     //break
   }
   //else
@@ -29,8 +39,18 @@ export default function CardComponets(props) {
               className="card-btn"
               variant="primary"
               onClick={() => {
+                // props.history.push(
+                //   `/${reqCity.region}/${card.routeTitle}/options`
+                // );
+
                 props.history.push(
-                  `/${reqCity.region}/${card.routeTitle}/options`
+                  `/${reqState.state
+                    .split(" ")
+                    .join("")
+                    .toLowerCase()}-${reqCity.name
+                    .split(" ")
+                    .join("")
+                    .toLowerCase()}/${card.routeTitle}/options`
                 );
               }}
             >

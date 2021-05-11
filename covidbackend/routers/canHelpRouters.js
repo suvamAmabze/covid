@@ -59,6 +59,7 @@ canHelpRouters.post(
       console.log("req.file is undefine");
       let cityName = req.params.city;
       let optionName = req.params.option;
+      // console.log(cityName,optionName)
       let model = callCanHelpModel(cityName, optionName);
 
       formReqInfo = new model({
@@ -72,6 +73,7 @@ canHelpRouters.post(
       console.log("req.file is not undefine");
       let cityName = req.params.city;
       let optionName = req.params.option;
+      // console.log(cityName,optionName)
       let model = callCanHelpModel(cityName, optionName);
 
       formReqInfo = new model({

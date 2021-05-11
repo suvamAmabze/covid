@@ -55,6 +55,7 @@ export default function CitySelectContainer(props) {
       alert(city)
       alert(state)
       // props.history.push(`/${city}`);
+      props.history.push(`/${state}-${city}`);
     }
   };
 

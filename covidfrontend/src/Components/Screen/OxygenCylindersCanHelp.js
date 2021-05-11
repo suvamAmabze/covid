@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Label, FormGroup } from "reactstrap";
 import axios from "axios";
 import cardOptionsData from "../CardData";
-import cityData from "../data.json";
+import cityData from "../cities.json";
 
 export default function OxygenCylindersCanHelp(props) {
   const pathname = props.location.pathname.slice(1);
@@ -13,9 +13,22 @@ export default function OxygenCylindersCanHelp(props) {
   const reqOption = cardOptionsData.cards.find(
     (obj) => obj.routeTitle === props.match.params.option
   );
-  const reqCity = cityData.find(
-    (obj) => obj.region === props.match.params.city
+  // const reqCity = cityData.find(
+  //   (obj) => obj.region === props.match.params.city
+  // );
+  const reqState = cityData.find(
+    (obj) =>
+      obj.state.split(" ").join("").toLowerCase() ===
+      props.match.params.city.split("-")[0]
   );
+  let reqCity;
+  if (reqState) {
+    reqCity = reqState.cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[1]
+    );
+  }
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,7 +38,7 @@ export default function OxygenCylindersCanHelp(props) {
 
   const onChangeFile = (e) => {
     setFileName(e.target.files[0]);
-    console.log("F A", fileName)
+    console.log("F A", fileName);
   };
 
   const [fullNameErr, setFullNameErr] = useState({});
@@ -100,12 +113,17 @@ export default function OxygenCylindersCanHelp(props) {
         .catch((error) => {
           console.log("CAN HELP-SHARE ERROR", error);
         });
-      props.history.push(`/${cityNameSplit}/${optionType}/options/need-help`);
+      props.history.push(
+        `/${reqState.state.split(" ").join("").toLowerCase()}-${reqCity.name
+          .split(" ")
+          .join("")
+          .toLowerCase()}/${optionType}/options/need-help`
+      );
     }
   };
 
-  if (!reqOption || !reqCity) {
-    return <div>Not Found</div>;
+  if (!reqOption || !reqCity || !reqState) {
+    return <div>Data Not Found</div>;
     //break
   }
   //else
