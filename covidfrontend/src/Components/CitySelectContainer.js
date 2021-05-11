@@ -50,8 +50,8 @@ export default function CitySelectContainer(props) {
     e.preventDefault();
     const isValid = formValidation();
     if (isValid) {
-      city = DDLcity.name;
-      state = DDLstate.state
+      city = DDLcity.name.split(" ").join("").toLowerCase();
+      state = DDLstate.state.split(" ").join("").toLowerCase();
       alert(city)
       alert(state)
       // props.history.push(`/${city}`);
