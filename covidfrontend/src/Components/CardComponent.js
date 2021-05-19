@@ -1,9 +1,11 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import data from "./CardData";
-import cityData from "./cities.json";
+import cityData from "./allcities.json";
 
 export default function CardComponets(props) {
+  let reqCity;
+  let reqDistrict;
   // const pathname = props.location.pathname.slice(1);
   // console.log(pathname)
   // console.log(props.match.params.city)
@@ -13,16 +15,22 @@ export default function CardComponets(props) {
       obj.state.split(" ").join("").toLowerCase() ===
       props.match.params.city.split("-")[0]
   );
-  let reqCity;
   if (reqState) {
-    reqCity = reqState.cities.find(
+    reqDistrict = reqState.districts.find(
       (obj) =>
         obj.name.split(" ").join("").toLowerCase() ===
         props.match.params.city.split("-")[1]
     );
   }
+  if (reqDistrict) {
+    reqCity = reqDistrict.Cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[2]
+    );
+  }
 
-  if (!reqState || !reqCity) {
+  if (!reqState || !reqDistrict || !reqCity) {
     return <div>Data Not Found</div>;
     //break
   }
@@ -45,6 +53,9 @@ export default function CardComponets(props) {
 
                 props.history.push(
                   `/${reqState.state
+                    .split(" ")
+                    .join("")
+                    .toLowerCase()}-${reqDistrict.name
                     .split(" ")
                     .join("")
                     .toLowerCase()}-${reqCity.name

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import cardOptionsData from "../CardData";
-import cityData from "../cities.json";
+import cityData from "../allcities.json";
 
 export default function OxygenCylindersNeedHelp(props) {
+  let reqCity;
+  let reqDistrict;
+
   const pathname = props.location.pathname.slice(1);
   console.log(pathname)
   let cityNameSplit = pathname.split("/")[0];
@@ -21,12 +24,18 @@ export default function OxygenCylindersNeedHelp(props) {
       obj.state.split(" ").join("").toLowerCase() ===
       props.match.params.city.split("-")[0]
   );
-  let reqCity;
   if (reqState) {
-    reqCity = reqState.cities.find(
+    reqDistrict = reqState.districts.find(
       (obj) =>
         obj.name.split(" ").join("").toLowerCase() ===
         props.match.params.city.split("-")[1]
+    );
+  }
+  if (reqDistrict) {
+    reqCity = reqDistrict.Cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[2]
     );
   }
 
@@ -52,8 +61,8 @@ export default function OxygenCylindersNeedHelp(props) {
       });
   };
 
-  if (!reqOption || !reqState || !reqCity) {
-    return <div>Not Found</div>;
+  if (!reqOption || !reqState || !reqDistrict || !reqCity) {
+    return <div>Data Not Found</div>;
     //break
   }
   //else

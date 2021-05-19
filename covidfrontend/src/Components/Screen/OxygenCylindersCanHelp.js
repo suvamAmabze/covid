@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Form, Input, Label, FormGroup } from "reactstrap";
 import axios from "axios";
 import cardOptionsData from "../CardData";
-import cityData from "../cities.json";
+import cityData from "../allcities.json";
 
 export default function OxygenCylindersCanHelp(props) {
+  let reqCity;
+  let reqDistrict;
+
   const pathname = props.location.pathname.slice(1);
   let cityNameSplit = pathname.split("/")[0];
   let cityName = cityNameSplit.charAt(0).toUpperCase() + cityNameSplit.slice(1);
@@ -21,12 +24,18 @@ export default function OxygenCylindersCanHelp(props) {
       obj.state.split(" ").join("").toLowerCase() ===
       props.match.params.city.split("-")[0]
   );
-  let reqCity;
   if (reqState) {
-    reqCity = reqState.cities.find(
+    reqDistrict = reqState.districts.find(
       (obj) =>
         obj.name.split(" ").join("").toLowerCase() ===
         props.match.params.city.split("-")[1]
+    );
+  }
+  if (reqDistrict) {
+    reqCity = reqDistrict.Cities.find(
+      (obj) =>
+        obj.name.split(" ").join("").toLowerCase() ===
+        props.match.params.city.split("-")[2]
     );
   }
 
@@ -114,7 +123,10 @@ export default function OxygenCylindersCanHelp(props) {
           console.log("CAN HELP-SHARE ERROR", error);
         });
       props.history.push(
-        `/${reqState.state.split(" ").join("").toLowerCase()}-${reqCity.name
+        `/${reqState.state.split(" ").join("").toLowerCase()}-${reqDistrict.name
+          .split(" ")
+          .join("")
+          .toLowerCase()}-${reqCity.name
           .split(" ")
           .join("")
           .toLowerCase()}/${optionType}/options/need-help`
@@ -122,7 +134,7 @@ export default function OxygenCylindersCanHelp(props) {
     }
   };
 
-  if (!reqOption || !reqCity || !reqState) {
+  if (!reqOption || !reqState || !reqDistrict || !reqCity) {
     return <div>Data Not Found</div>;
     //break
   }
