@@ -1,27 +1,39 @@
 import React, { useState } from "react";
 import { Form, Input, Label, FormGroup } from "reactstrap";
 import Select from "react-select";
-import data from "./cities.json";
+import data from "./allcities.json";
 
 export default function CitySelectContainer(props) {
-  let city;
   let state;
+  let district;
+  let city;
 
   const [country, setCountry] = useState("India");
   const [DDLstate, setDDLState] = useState("");
+
+  const [DDLdistricts, setDDLDistricts] = useState("");
+  const [DDLdistrictsList, setDDLDistrictsList] = useState([]);
+
   const [DDLcity, setDDLCity] = useState("");
   const [DDLcityList, setDDLCityList] = useState([]);
 
-  const [DDLcityErr, setDDLcityErr] = useState({});
+  
   const [DDLstateErr, setDDLstateErr] = useState({});
+  const [DDLdistrictsErr, setDDLdistrictsErr] = useState({});
+  const [DDLcityErr, setDDLcityErr] = useState({});
 
   const formValidation = () => {
     const DDLcityErr = {};
     const DDLstateErr = {};
+    const DDLdistrictsErr = {};
     let isValid = true;
 
     if (DDLcity === "") {
       DDLcityErr.nameEmpty = `City can not be blank`;
+      isValid = false;
+    }
+    if (DDLdistricts === "") {
+      DDLdistrictsErr.nameEmpty = `district can not be blank`;
       isValid = false;
     }
     if (DDLstate === "") {
@@ -30,14 +42,22 @@ export default function CitySelectContainer(props) {
     }
 
     setDDLcityErr(DDLcityErr);
-    setDDLstateErr(DDLstateErr)
+    setDDLdistrictsErr(DDLdistrictsErr);
+    setDDLstateErr(DDLstateErr);
     return isValid;
   };
 
   // handle change state dropdown
   const handleStateChange = (obj) => {
     setDDLState(obj);
-    setDDLCityList(obj.cities);
+    setDDLDistrictsList(obj.districts);
+    setDDLDistricts("");
+  };
+
+  // handle change district dropdown
+  const handleDistrictsChange = (obj) => {
+    setDDLDistricts(obj);
+    setDDLCityList(obj.Cities);
     setDDLCity("");
   };
 
@@ -51,9 +71,14 @@ export default function CitySelectContainer(props) {
     const isValid = formValidation();
     if (isValid) {
       city = DDLcity.name.split(" ").join("").toLowerCase();
+      district = DDLdistricts.name.split(" ").join("").toLowerCase();
       state = DDLstate.state.split(" ").join("").toLowerCase();
       // props.history.push(`/${city}`);
-      props.history.push(`/${state}-${city}`);
+      
+      alert(state);
+      alert(district);
+      alert(city);
+      props.history.push(`/${state}-${district}-${city}`);
     }
   };
 
@@ -102,11 +127,32 @@ export default function CitySelectContainer(props) {
       </FormGroup>
 
       <FormGroup>
-        <Label for="City">
-          <span>Cities, Towns</span>
+        <Label for="Districts">
+          <span>Districts</span>
         </Label>
         <Select
-          placeholder="Select city or town"
+          placeholder="Select district"
+          value={DDLdistricts}
+          options={DDLdistrictsList}
+          onChange={handleDistrictsChange}
+          getOptionLabel={(x) => x.name}
+          getOptionValue={(x) => x.code}
+        />
+        {Object.keys(DDLdistrictsErr).map((key) => {
+          return (
+            <div style={{ color: "red", fontWeight: "bold" }} key={key}>
+              {DDLdistrictsErr[key]}&nbsp;<i className="fas fa-exclamation"></i>
+            </div>
+          );
+        })}
+      </FormGroup>
+
+      <FormGroup>
+        <Label for="City">
+          <span>Cities, Towns, Important places</span>
+        </Label>
+        <Select
+          placeholder="Select city, town or Important places"
           value={DDLcity}
           options={DDLcityList}
           onChange={handleCityChange}
