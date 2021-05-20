@@ -221,17 +221,17 @@
       {
         "name": "Anjaw",
         "code": "ARP1",
-        "Cities": [{ "name": "", "code": "ARP1.1" }]
+        "Cities": [{ "name": "Hawai", "code": "ARP1.1" }]
       },
       {
         "name": "Changlang",
         "code": "ARP2",
-        "Cities": [{ "name": " ", "code": "ARP2.1" }]
+        "Cities": [{ "name": "Changlang", "code": "ARP2.1" }]
       },
       {
         "name": "Dibang Valley",
         "code": "ARP3",
-        "Cities": [{ "name": " ", "code": "ARP2.1" }]
+        "Cities": [{ "name": "Anini", "code": "ARP2.1" }]
       },
       {
         "name": "East Kameng",
@@ -246,7 +246,7 @@
       {
         "name": "Kurung Kumey",
         "code": "ARP6",
-        "Cities": [{ "name": " ", "code": "ARP6.1" }]
+        "Cities": [{ "name": "Koloriang", "code": "ARP6.1" }]
       },
       {
         "name": "Lohit",
@@ -287,7 +287,7 @@
       {
         "name": "Upper Siang",
         "code": "ARP13",
-        "Cities": [{ "name": " ", "code": "ARP13.1" }]
+        "Cities": [{ "name": "Yingkiong", "code": "ARP13.1" }]
       },
       {
         "name": "Upper Subansiri",
@@ -315,7 +315,7 @@
       {
         "name": "Baksa",
         "code": "ASSM1",
-        "Cities": [{ "name": "", "code": "ASSM1.1" }]
+        "Cities": [{ "name": "Mushalpur", "code": "ASSM1.1" }]
       },
       {
         "name": "Barpeta",
@@ -335,17 +335,17 @@
       {
         "name": "Chirang",
         "code": "ASSM5",
-        "Cities": [{ "name": " ", "code": "ASSM5.1" }]
+        "Cities": [{ "name": "Kajalgaon", "code": "ASSM5.1" }]
       },
       {
         "name": "Darrang",
         "code": "ASSM6",
-        "Cities": [{ "name": "", "code": "ASSM6.1" }]
+        "Cities": [{ "name": "Mangaldoi", "code": "ASSM6.1" }]
       },
       {
         "name": "Dhemaji",
         "code": "ASSM7",
-        "Cities": [{ "name": " ", "code": "ARP7.1" }]
+        "Cities": [{ "name": "Dhemaji", "code": "ARP7.1" }]
       },
       {
         "name": "Dhubri",
@@ -385,7 +385,7 @@
       {
         "name": "Kamrup",
         "code": "ASSM15",
-        "Cities": [{ "name": " ", "code": "ARP15.1" }]
+        "Cities": [{ "name": "Amingaon", "code": "ARP15.1" }]
       },
       {
         "name": "Kamrup Metropolitan",
@@ -445,7 +445,7 @@
       {
         "name": "Udalguri",
         "code": "ASSM27",
-        "Cities": [{ "name": " ", "code": "ASSM27.1" }]
+        "Cities": [{ "name": "Udalguri", "code": "ASSM27.1" }]
       }
     ]
   },
