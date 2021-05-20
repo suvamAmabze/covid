@@ -73,11 +73,7 @@ export default function CitySelectContainer(props) {
       city = DDLcity.name.split(" ").join("").toLowerCase();
       district = DDLdistricts.name.split(" ").join("").toLowerCase();
       state = DDLstate.state.split(" ").join("").toLowerCase();
-      // props.history.push(`/${city}`);
-
-      alert(state);
-      alert(district);
-      alert(city);
+      
       props.history.push(`/${state}-${district}-${city}`);
     }
   };
