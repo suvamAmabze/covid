@@ -31,6 +31,7 @@ app.use("/api", canHelpRouters);
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '/covidfrontend/build')));
+app.use(express.static(path.join(__dirname, '/covidfrontend/public')));
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/covidfrontend/build/index.html'))
 );

@@ -121,7 +121,7 @@ export default function OxygenCylindersNeedHelp(props) {
                 src={`/upload/${m.articleImage}`}
                 className="NeedHelp-img zoom"
               ></img>
-              <a href={`/upload/${m.articleImage}`}>pdf</a>
+              <a href={`/upload/${m.articleImage}`}>{m.articleImage}</a>
             {/* ) : null} */}
           </div>
         ))
