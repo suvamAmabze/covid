@@ -1,8 +1,8 @@
-import express from "express";
-import expressAsyncHandler from "express-async-handler";
-import mongoose from "mongoose";
-import multer from "multer";
-import path from "path";
+const express = require("express");
+const mongoose = require("mongoose");
+const multer = require("multer");
+const expressAsyncHandler = require("express-async-handler");
+const path = require("path");
 
 //define storage for image by multer-----
 const storage = multer.diskStorage({
@@ -114,4 +114,4 @@ canHelpRouters.get(
   })
 );
 
-export default canHelpRouters;
+module.exports = canHelpRouters;

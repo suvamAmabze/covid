@@ -1,10 +1,8 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import path from "path";
-
-//import Routers-:
-import canHelpRouters from "./routers/canHelpRouters.js"
+const express = require("express");
+const mongoose = require("mongoose")
+const dotenv = require("dotenv");
+const path = require("path");
+const canHelpRouters = require("./routers/canHelpRouters");
 
 dotenv.config();
 const app = express();
@@ -29,11 +27,11 @@ mongoose
 //Routers-:
 app.use("/api", canHelpRouters);
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/covidfrontend/build')));
-app.use(express.static(path.join(__dirname, '/covidfrontend/public')));
+const dirname = path.resolve();
+app.use(express.static(path.join(dirname, '/covidfrontend/build')));
+app.use(express.static(path.join(dirname, '/covidfrontend/public')));
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/covidfrontend/build/index.html'))
+  res.sendFile(path.join(dirname, '/covidfrontend/build/index.html'))
 );
 
 // app.get("/", (req, res) => {
@@ -43,4 +41,5 @@ app.get('*', (req, res) =>
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);
+  console.log("dirname is",dirname)
 });
